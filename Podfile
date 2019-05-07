@@ -9,6 +9,6 @@ target 'KatKat' do
   pod 'SwiftyJSON', '~> 4.0'
   pod 'Kingfisher', '~> 5.0'
   pod 'Alamofire', '~> 5.0.0-beta.5'
-
+  pod 'lottie-ios'
 
 end

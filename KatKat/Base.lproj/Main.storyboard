@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="mJN-G0-2BI">
     <device id="retina6_1" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -10,23 +10,63 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Splash View Controller-->
+        <scene sceneID="u9L-yB-3VB">
+            <objects>
+                <viewController id="mJN-G0-2BI" customClass="SplashViewController" customModule="KatKat" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="p4f-Zg-3rd">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TXo-6s-zxb">
+                                <rect key="frame" x="0.0" y="44" width="414" height="536.5"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="KatKat" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fnh-dq-9fM">
+                                <rect key="frame" x="171" y="730.5" width="72.5" height="31.5"/>
+                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="24"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="dVo-qU-DjS" firstAttribute="bottom" secondItem="fnh-dq-9fM" secondAttribute="bottom" constant="100" id="Iqc-ZX-8bx"/>
+                            <constraint firstItem="fnh-dq-9fM" firstAttribute="centerX" secondItem="dVo-qU-DjS" secondAttribute="centerX" id="Zhy-eH-vXm"/>
+                            <constraint firstItem="dVo-qU-DjS" firstAttribute="trailing" secondItem="TXo-6s-zxb" secondAttribute="trailing" id="dWP-Dx-dsb"/>
+                            <constraint firstItem="TXo-6s-zxb" firstAttribute="top" secondItem="dVo-qU-DjS" secondAttribute="top" id="ngv-Jx-eIU"/>
+                            <constraint firstItem="TXo-6s-zxb" firstAttribute="leading" secondItem="dVo-qU-DjS" secondAttribute="leading" id="tc0-Dr-yBg"/>
+                            <constraint firstItem="fnh-dq-9fM" firstAttribute="top" secondItem="TXo-6s-zxb" secondAttribute="bottom" constant="150" id="wXl-Sa-CzV"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="dVo-qU-DjS"/>
+                    </view>
+                    <connections>
+                        <outlet property="lottieContainerView" destination="TXo-6s-zxb" id="zx9-Ix-BoB"/>
+                        <segue destination="BYZ-38-t0r" kind="show" identifier="showMain" id="ve7-7V-rlX"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="BD6-0L-cgc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-662.31884057971024" y="20.758928571428569"/>
+        </scene>
+        <!--Main View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="KatKat" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="MainViewController" customModule="KatKat" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="gJj-rr-MRK">
-                                <rect key="frame" x="20" y="102" width="374" height="680"/>
+                                <rect key="frame" x="20" y="103.5" width="374" height="674.5"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HfL-86-bsC">
-                                <rect key="frame" x="20" y="802" width="374" height="40"/>
+                                <rect key="frame" x="20" y="798" width="374" height="44"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="8NG-2m-JfZ"/>
+                                    <constraint firstAttribute="height" constant="44" id="8NG-2m-JfZ"/>
                                 </constraints>
+                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="17"/>
                                 <state key="normal" title="Meow">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
@@ -34,9 +74,9 @@
                                     <action selector="didTapMeowButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Vr6-Hm-4dD"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Get random 🐱 images!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zf2-oK-zos">
-                                <rect key="frame" x="116" y="61" width="182.5" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Get random 🐱 images" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zf2-oK-zos">
+                                <rect key="frame" x="117" y="61" width="180.5" height="22.5"/>
+                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>

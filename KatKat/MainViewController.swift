@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  MainViewController.swift
 //  KatKat
 //
 //  Created by Zhaowei Wu on 5/7/19.
@@ -11,7 +11,7 @@ import SwiftyJSON
 import Kingfisher
 import Alamofire
 
-class ViewController: UIViewController {
+class MainViewController: UIViewController {
     
     @IBOutlet weak var imgView: UIImageView!
     @IBOutlet weak var meowButton: UIButton!
