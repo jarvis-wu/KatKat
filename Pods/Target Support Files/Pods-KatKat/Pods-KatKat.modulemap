@@ -1,0 +1,6 @@
+framework module Pods_KatKat {
+  umbrella header "Pods-KatKat-umbrella.h"
+
+  export *
+  module * { export * }
+}
