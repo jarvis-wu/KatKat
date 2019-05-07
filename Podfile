@@ -6,9 +6,11 @@ target 'KatKat' do
   use_frameworks!
 
   # Pods for KatKat
-  pod 'SwiftyJSON', '~> 4.0'
-  pod 'Kingfisher', '~> 5.0'
   pod 'Alamofire', '~> 5.0.0-beta.5'
+  pod 'Kingfisher', '~> 5.0'
   pod 'lottie-ios'
+  pod 'ReachabilitySwift'
+  pod 'SwiftMessages'
+  pod 'SwiftyJSON', '~> 4.0'
 
 end

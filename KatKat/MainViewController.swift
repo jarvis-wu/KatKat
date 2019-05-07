@@ -10,8 +10,13 @@ import UIKit
 import SwiftyJSON
 import Kingfisher
 import Alamofire
+import Reachability
+import SwiftMessages
 
 class MainViewController: UIViewController {
+    
+    let reachability = Reachability()!
+    var currentReachability: Bool? = nil
     
     @IBOutlet weak var imgView: UIImageView!
     @IBOutlet weak var meowButton: UIButton!
@@ -23,6 +28,7 @@ class MainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setUI()
+        setReachabilityNotifier()
         fetchAndDisplayImg()
     }
     
@@ -31,12 +37,46 @@ class MainViewController: UIViewController {
         meowButton.addShadow()
     }
     
+    private func setReachabilityNotifier() {
+        reachability.whenReachable = { reachability in
+            // Do not notify reachability if connected via wifi initially
+            if reachability.connection == .wifi && self.currentReachability != nil {
+                self.reachabilityDidChange(connection: .wifi)
+            } else if reachability.connection == .cellular {
+                self.reachabilityDidChange(connection: .cellular)
+            }
+            self.currentReachability = true
+        }
+        reachability.whenUnreachable = { reachability in
+            self.reachabilityDidChange(connection: .none)
+            self.currentReachability = false
+        }
+        try? reachability.startNotifier()
+    }
+    
     private func fetchAndDisplayImg() {
         AF.request("https://api.thecatapi.com/v1/images/search").responseData { dataRes in
             if let data = dataRes.data, let json = try? JSON(data: data), let imgUrl = URL(string: json[0]["url"].stringValue) {
                 self.imgView.kf.setImage(with: imgUrl)
             }
         }
+    }
+    
+    private func reachabilityDidChange(connection: Reachability.Connection) {
+        let messageView = MessageView.viewFromNib(layout: .statusLine)
+        var message = "Welcome back online!"
+        switch connection {
+        case .cellular:
+            message = "Using cellular data. Watch out!"
+        case .wifi:
+            message = "Welcome back online!"
+        case .none:
+            message = "You are offline. No more cats :<"
+        }
+        messageView.configureContent(body: message)
+        messageView.layoutMarginAdditions = UIEdgeInsets(top: 15, left: 15, bottom: 15, right: 15)
+        messageView.addShadow()
+        SwiftMessages.show(view: messageView)
     }
 
 
