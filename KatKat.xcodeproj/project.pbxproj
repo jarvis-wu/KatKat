@@ -14,6 +14,7 @@
 		317A126E2281FFBC001FF9E1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 317A126C2281FFBC001FF9E1 /* LaunchScreen.storyboard */; };
 		317A127622821687001FF9E1 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 317A127522821687001FF9E1 /* SplashViewController.swift */; };
 		317A127B22821B6E001FF9E1 /* logo.json in Resources */ = {isa = PBXBuildFile; fileRef = 317A127A22821960001FF9E1 /* logo.json */; };
+		317B3C85228266870032A846 /* ImageUploadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 317B3C84228266870032A846 /* ImageUploadViewController.swift */; };
 		8DE30F415EA2A48A0DB85CAA /* Pods_KatKat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E8BBD96D4A89DE0A8E922D60 /* Pods_KatKat.framework */; };
 /* End PBXBuildFile section */
 
@@ -28,6 +29,7 @@
 		317A126F2281FFBC001FF9E1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		317A127522821687001FF9E1 /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
 		317A127A22821960001FF9E1 /* logo.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = logo.json; sourceTree = "<group>"; };
+		317B3C84228266870032A846 /* ImageUploadViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageUploadViewController.swift; sourceTree = "<group>"; };
 		4CB53C785EABEAD802A8E560 /* Pods-KatKat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KatKat.debug.xcconfig"; path = "Target Support Files/Pods-KatKat/Pods-KatKat.debug.xcconfig"; sourceTree = "<group>"; };
 		E8BBD96D4A89DE0A8E922D60 /* Pods_KatKat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KatKat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -66,8 +68,9 @@
 			isa = PBXGroup;
 			children = (
 				317A12632281FFBA001FF9E1 /* AppDelegate.swift */,
-				317A12652281FFBA001FF9E1 /* MainViewController.swift */,
 				317A127522821687001FF9E1 /* SplashViewController.swift */,
+				317A12652281FFBA001FF9E1 /* MainViewController.swift */,
+				317B3C84228266870032A846 /* ImageUploadViewController.swift */,
 				317A127C22821BA9001FF9E1 /* Resources */,
 				317A12672281FFBA001FF9E1 /* Main.storyboard */,
 				317A126A2281FFBC001FF9E1 /* Assets.xcassets */,
@@ -234,6 +237,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				317A127622821687001FF9E1 /* SplashViewController.swift in Sources */,
+				317B3C85228266870032A846 /* ImageUploadViewController.swift in Sources */,
 				317A12662281FFBA001FF9E1 /* MainViewController.swift in Sources */,
 				317A12642281FFBA001FF9E1 /* AppDelegate.swift in Sources */,
 			);

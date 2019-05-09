@@ -41,5 +41,9 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>NSCameraUsageDescription</key>
+	<string>KatKat wants to use the camera.</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>KatKat wants to use your photos.</string>
 </dict>
 </plist>

@@ -25,6 +25,10 @@ class MainViewController: UIViewController {
         fetchAndDisplayImg()
     }
     
+    @IBAction func didTapPlusButton(_ sender: Any) {
+        uploadPhoto()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setUI()
@@ -55,15 +59,22 @@ class MainViewController: UIViewController {
     }
     
     private func fetchAndDisplayImg() {
-        AF.request("https://api.thecatapi.com/v1/images/search").responseData { dataRes in
+        let url = "https://api.thecatapi.com/v1/images/search"
+        AF.request(url).responseData { dataRes in
             if let data = dataRes.data, let json = try? JSON(data: data), let imgUrl = URL(string: json[0]["url"].stringValue) {
                 self.imgView.kf.setImage(with: imgUrl)
             }
         }
     }
     
+    private func uploadPhoto() {
+        let pickerController = UIImagePickerController()
+        pickerController.delegate = self
+        pickerController.mediaTypes = ["public.image"]
+        present(pickerController, animated: true)
+    }
+    
     private func reachabilityDidChange(connection: Reachability.Connection) {
-        let messageView = MessageView.viewFromNib(layout: .statusLine)
         var message = "Welcome back online!"
         switch connection {
         case .cellular:
@@ -73,12 +84,16 @@ class MainViewController: UIViewController {
         case .none:
             message = "You are offline. No more cats :<"
         }
-        messageView.configureContent(body: message)
-        messageView.layoutMarginAdditions = UIEdgeInsets(top: 15, left: 15, bottom: 15, right: 15)
-        messageView.addShadow()
-        SwiftMessages.show(view: messageView)
+        showStatusLineMessage(message: message)
     }
-
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "showImageUploader" {
+            let vc = segue.destination as! ImageUploadViewController
+            vc.img = sender as? UIImage
+            vc.navigationItem.hidesBackButton = true
+        }
+    }
 
 }
 
@@ -88,6 +103,25 @@ extension UIView {
         layer.shadowColor = color
         layer.shadowOpacity = opacity
         layer.shadowOffset = offset
+    }
+}
+
+extension MainViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        picker.dismiss(animated: true) {
+            guard let image = info[.originalImage] as? UIImage else { return }
+            self.performSegue(withIdentifier: "showImageUploader", sender: image)
+        }
+    }
+}
+
+extension UIViewController {
+    func showStatusLineMessage(message: String) {
+        let messageView = MessageView.viewFromNib(layout: .statusLine)
+        messageView.configureContent(body: message)
+        messageView.layoutMarginAdditions = UIEdgeInsets(top: 15, left: 15, bottom: 15, right: 15)
+        messageView.addShadow()
+        SwiftMessages.show(view: messageView)
     }
 }
 

@@ -42,14 +42,14 @@
                     </view>
                     <connections>
                         <outlet property="lottieContainerView" destination="TXo-6s-zxb" id="zx9-Ix-BoB"/>
-                        <segue destination="BYZ-38-t0r" kind="show" identifier="showMain" id="ve7-7V-rlX"/>
+                        <segue destination="GH4-ah-I6J" kind="show" identifier="showMain" id="ve7-7V-rlX"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BD6-0L-cgc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-662.31884057971024" y="20.758928571428569"/>
         </scene>
-        <!--Main View Controller-->
+        <!--Kaleidoscope-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="MainViewController" customModule="KatKat" customModuleProvider="target" sceneMemberID="viewController">
@@ -58,7 +58,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="gJj-rr-MRK">
-                                <rect key="frame" x="20" y="103.5" width="374" height="674.5"/>
+                                <rect key="frame" x="20" y="160" width="374" height="618"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HfL-86-bsC">
                                 <rect key="frame" x="20" y="798" width="374" height="44"/>
@@ -74,35 +74,128 @@
                                     <action selector="didTapMeowButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Vr6-Hm-4dD"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Get random 🐱 images" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zf2-oK-zos">
-                                <rect key="frame" x="117" y="61" width="180.5" height="22.5"/>
-                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="HfL-86-bsC" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="0U4-JX-WDZ"/>
-                            <constraint firstItem="gJj-rr-MRK" firstAttribute="top" secondItem="zf2-oK-zos" secondAttribute="bottom" constant="20" id="8ce-he-FZU"/>
+                            <constraint firstItem="gJj-rr-MRK" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="20" id="E30-eI-Wf8"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="HfL-86-bsC" secondAttribute="bottom" constant="20" id="HWb-hF-wXl"/>
                             <constraint firstItem="HfL-86-bsC" firstAttribute="top" secondItem="gJj-rr-MRK" secondAttribute="bottom" constant="20" id="MJx-iu-NAV"/>
-                            <constraint firstItem="zf2-oK-zos" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="Tj9-8z-r9Q"/>
-                            <constraint firstItem="zf2-oK-zos" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="17" id="V57-gZ-cEL"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="HfL-86-bsC" secondAttribute="trailing" constant="20" id="cJE-Vg-LA8"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="gJj-rr-MRK" secondAttribute="trailing" constant="20" id="rdJ-wH-snx"/>
                             <constraint firstItem="gJj-rr-MRK" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="yDW-nC-oUM"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <navigationItem key="navigationItem" title="Kaleidoscope" id="wsI-IC-xIl">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="tLg-Nd-qYL">
+                            <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <connections>
+                                <action selector="didTapPlusButton:" destination="BYZ-38-t0r" id="mly-jl-lkj"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="imgView" destination="gJj-rr-MRK" id="aQn-At-m8g"/>
                         <outlet property="meowButton" destination="HfL-86-bsC" id="oej-jA-9lT"/>
+                        <segue destination="DaS-5X-dQY" kind="show" identifier="showImageUploader" id="H8K-tW-FBf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="47.826086956521742" y="20.758928571428569"/>
+            <point key="canvasLocation" x="745" y="21"/>
+        </scene>
+        <!--Share-->
+        <scene sceneID="zQn-Hm-Vo3">
+            <objects>
+                <viewController id="DaS-5X-dQY" customClass="ImageUploadViewController" customModule="KatKat" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="oye-ls-Q3U">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Raz-ue-4lP">
+                                <rect key="frame" x="20" y="160" width="374" height="618"/>
+                            </imageView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="DGU-An-LAX">
+                                <rect key="frame" x="188.5" y="450.5" width="37" height="37"/>
+                            </activityIndicatorView>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="lVM-0u-Hga">
+                                <rect key="frame" x="20" y="798" width="374" height="44"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A7v-6g-JnZ">
+                                        <rect key="frame" x="0.0" y="0.0" width="181" height="44"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="44" id="VoX-Gy-imP"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="17"/>
+                                        <state key="normal" title="Upload">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="didTapUploadButton:" destination="DaS-5X-dQY" eventType="touchUpInside" id="nmR-lG-ifa"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hd6-G1-GJM">
+                                        <rect key="frame" x="193" y="0.0" width="181" height="44"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="44" id="1yt-3v-8ak"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="17"/>
+                                        <state key="normal" title="Cancel">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="didTapCancelButton:" destination="DaS-5X-dQY" eventType="touchUpInside" id="ArX-Vx-qiQ"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="e8o-nF-AOc" firstAttribute="bottom" secondItem="lVM-0u-Hga" secondAttribute="bottom" constant="20" id="3e1-pe-Rhu"/>
+                            <constraint firstItem="lVM-0u-Hga" firstAttribute="leading" secondItem="e8o-nF-AOc" secondAttribute="leading" constant="20" id="Eln-R3-ANH"/>
+                            <constraint firstItem="lVM-0u-Hga" firstAttribute="top" secondItem="Raz-ue-4lP" secondAttribute="bottom" constant="20" id="FJs-Ge-FzH"/>
+                            <constraint firstItem="e8o-nF-AOc" firstAttribute="trailing" secondItem="Raz-ue-4lP" secondAttribute="trailing" constant="20" id="Hp9-EH-c1n"/>
+                            <constraint firstItem="Raz-ue-4lP" firstAttribute="leading" secondItem="e8o-nF-AOc" secondAttribute="leading" constant="20" id="TrC-L5-cZD"/>
+                            <constraint firstItem="Raz-ue-4lP" firstAttribute="top" secondItem="e8o-nF-AOc" secondAttribute="top" constant="20" id="Vnv-Lh-CDD"/>
+                            <constraint firstItem="e8o-nF-AOc" firstAttribute="trailing" secondItem="lVM-0u-Hga" secondAttribute="trailing" constant="20" id="dsD-mw-Fie"/>
+                            <constraint firstItem="DGU-An-LAX" firstAttribute="centerY" secondItem="Raz-ue-4lP" secondAttribute="centerY" id="gDB-S4-Bjm"/>
+                            <constraint firstItem="DGU-An-LAX" firstAttribute="centerX" secondItem="Raz-ue-4lP" secondAttribute="centerX" id="hVu-Jw-zbo"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="e8o-nF-AOc"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Share" id="LdF-rR-PCX"/>
+                    <connections>
+                        <outlet property="activityIndicator" destination="DGU-An-LAX" id="WXx-Pq-dZf"/>
+                        <outlet property="cancelButton" destination="Hd6-G1-GJM" id="RzO-OA-nHb"/>
+                        <outlet property="imgView" destination="Raz-ue-4lP" id="j1G-Vm-dtp"/>
+                        <outlet property="uploadButton" destination="A7v-6g-JnZ" id="KpZ-oA-GZJ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tCu-0k-zGB" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1451" y="21"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Fc3-Bv-6Hm">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="GH4-ah-I6J" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="2AM-wy-qbg">
+                        <rect key="frame" x="0.0" y="44" width="414" height="96"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="rX7-tR-Lhk"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="aPF-0k-daJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="41" y="21"/>
         </scene>
     </scenes>
 </document>
