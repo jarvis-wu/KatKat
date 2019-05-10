@@ -67,7 +67,7 @@
                                     <constraint firstAttribute="height" constant="44" id="8NG-2m-JfZ"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="17"/>
-                                <state key="normal" title="Meow">
+                                <state key="normal" title="Shuffle">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
@@ -88,12 +88,21 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" title="Kaleidoscope" id="wsI-IC-xIl">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="tLg-Nd-qYL">
-                            <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            <connections>
-                                <action selector="didTapPlusButton:" destination="BYZ-38-t0r" id="mly-jl-lkj"/>
-                            </connections>
-                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem systemItem="organize" id="8MC-q2-tmA">
+                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <action selector="didTapFavoritesButton:" destination="BYZ-38-t0r" id="UQw-yc-ha7"/>
+                                    <segue destination="CSR-w5-vor" kind="show" id="3pZ-jO-BY1"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem systemItem="add" id="tLg-Nd-qYL">
+                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <action selector="didTapPlusButton:" destination="BYZ-38-t0r" id="mly-jl-lkj"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
                     </navigationItem>
                     <connections>
                         <outlet property="imgView" destination="gJj-rr-MRK" id="aQn-At-m8g"/>
@@ -178,6 +187,67 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tCu-0k-zGB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1451" y="21"/>
+        </scene>
+        <!--Favorites-->
+        <scene sceneID="Cst-gh-l6W">
+            <objects>
+                <viewController id="CSR-w5-vor" customClass="FavoritesViewController" customModule="KatKat" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="iRJ-Ks-rfm">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="t9p-qg-4N7">
+                                <rect key="frame" x="10" y="150" width="394" height="746"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="zIb-fJ-t8p">
+                                    <size key="itemSize" width="190" height="190"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="favoriteCell" id="TXT-HL-3EO" customClass="FavoritesCollectionViewCell" customModule="KatKat" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="190" height="190"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                            <rect key="frame" x="0.0" y="0.0" width="190" height="190"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="26d-We-2Gv">
+                                                    <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
+                                                </imageView>
+                                            </subviews>
+                                        </view>
+                                        <constraints>
+                                            <constraint firstAttribute="bottom" secondItem="26d-We-2Gv" secondAttribute="bottom" id="Tj5-De-csJ"/>
+                                            <constraint firstItem="26d-We-2Gv" firstAttribute="top" secondItem="TXT-HL-3EO" secondAttribute="top" id="aU0-ht-gTa"/>
+                                            <constraint firstItem="26d-We-2Gv" firstAttribute="leading" secondItem="TXT-HL-3EO" secondAttribute="leading" id="egk-mz-Vlw"/>
+                                            <constraint firstAttribute="trailing" secondItem="26d-We-2Gv" secondAttribute="trailing" id="ovP-wI-PlV"/>
+                                        </constraints>
+                                        <connections>
+                                            <outlet property="imgView" destination="26d-We-2Gv" id="O0I-6D-YGB"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="acg-vA-rr6" firstAttribute="trailing" secondItem="t9p-qg-4N7" secondAttribute="trailing" constant="10" id="npH-uC-1AM"/>
+                            <constraint firstItem="t9p-qg-4N7" firstAttribute="leading" secondItem="acg-vA-rr6" secondAttribute="leading" constant="10" id="sme-iK-8dp"/>
+                            <constraint firstItem="t9p-qg-4N7" firstAttribute="top" secondItem="acg-vA-rr6" secondAttribute="top" constant="10" id="vlX-Jo-65C"/>
+                            <constraint firstAttribute="bottom" secondItem="t9p-qg-4N7" secondAttribute="bottom" id="xsd-PE-Oqr"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="acg-vA-rr6"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Favorites" id="OcC-xC-qN8"/>
+                    <connections>
+                        <outlet property="collectionView" destination="t9p-qg-4N7" id="qha-M8-nmz"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="yXr-ef-8AO" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2139.130434782609" y="20.758928571428569"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Fc3-Bv-6Hm">

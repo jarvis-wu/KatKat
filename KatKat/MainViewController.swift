@@ -12,11 +12,13 @@ import Kingfisher
 import Alamofire
 import Reachability
 import SwiftMessages
+import Lottie
 
 class MainViewController: UIViewController {
     
     let reachability = Reachability()!
     var currentReachability: Bool? = nil
+    var currentImgUrl: String? = nil
     
     @IBOutlet weak var imgView: UIImageView!
     @IBOutlet weak var meowButton: UIButton!
@@ -29,10 +31,15 @@ class MainViewController: UIViewController {
         uploadPhoto()
     }
     
+    @IBAction func didTapFavoritesButton(_ sender: Any) {
+        showFavorites()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setUI()
         setReachabilityNotifier()
+        setGestures()
         fetchAndDisplayImg()
     }
     
@@ -58,11 +65,55 @@ class MainViewController: UIViewController {
         try? reachability.startNotifier()
     }
     
+    private func setGestures() {
+        let tap = UITapGestureRecognizer(target: self, action: #selector(doubleTapped))
+        tap.numberOfTapsRequired = 2
+        imgView.isUserInteractionEnabled = true
+        imgView.addGestureRecognizer(tap)
+    }
+    
+    @objc func doubleTapped() {
+        saveToFavorites()
+        playAnimation()
+    }
+    
+    private func saveToFavorites() {
+        if let imgUrl = currentImgUrl {
+            let defaults = UserDefaults.standard
+            var favorites = defaults.stringArray(forKey: "favorites") ?? [String]()
+            favorites.append(imgUrl)
+            defaults.set(favorites, forKey: "favorites")
+            // TODO: should we check duplicated addition?
+        }
+    }
+    
+    private func showFavorites() {
+        // showing favorites in storyboard segue
+    }
+    
+    private func playAnimation() {
+        let animationView = AnimationView(name: "like")
+        animationView.frame = CGRect(x: 0, y: 0, width: 100, height: 100)
+        animationView.center = imgView.center
+        animationView.contentMode = .scaleAspectFit
+        view.addSubview(animationView)
+        animationView.play { (completed) in
+            UIView.animate(withDuration: 0.5, animations: {
+                animationView.alpha = 0
+            }, completion: { (completed) in
+                animationView.removeFromSuperview()
+                // Get next image after liking current one
+                self.fetchAndDisplayImg()
+            })
+        }
+    }
+    
     private func fetchAndDisplayImg() {
-        let url = "https://api.thecatapi.com/v1/images/search"
-        AF.request(url).responseData { dataRes in
+        let apiUrl = "https://api.thecatapi.com/v1/images/search"
+        AF.request(apiUrl).responseData { dataRes in
             if let data = dataRes.data, let json = try? JSON(data: data), let imgUrl = URL(string: json[0]["url"].stringValue) {
                 self.imgView.kf.setImage(with: imgUrl)
+                self.currentImgUrl = imgUrl.absoluteString
             }
         }
     }
